@@ -6,19 +6,14 @@ using System.Threading.Tasks;
 
 namespace Exempels_11_2
 {
-    class Employee
+    abstract class Employee
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public static double Salary { get; set; }
         public override string ToString()
         {
-            return Id+" "+Name+" "+Salary;
+            return Id+" "+Name+" "+ GetSalary();
         }
-        public virtual double GetSalary()
-        {
-            Salary = GetSalary();
-            return Salary;
-        }
+        public abstract double GetSalary();
     }
 }

@@ -10,9 +10,10 @@ namespace Exempels_11_2
     {
         public int Time { set; get; }
 
-        public Worker(int id)
+        public Worker(int id,int time)
         {
             this.Id = id;
+            this.Time = time;
         }
         public override double GetSalary()
         {

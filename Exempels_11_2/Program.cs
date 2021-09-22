@@ -8,6 +8,8 @@ namespace Exempels_11_2
         {
             ManagementDepartament mDep = new ManagementDepartament();
 
+            TestData(mDep);
+
             bool choice = true;
             while (choice)
             {
@@ -78,10 +80,10 @@ namespace Exempels_11_2
                         Console.WriteLine("Введите ID сотрудника");
                         id = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("Введите количество отработанных часов");
-                        double time= Convert.ToDouble(Console.ReadLine());
-                        Employee employeeWorker = new Worker(id);
+                        int time= Convert.ToInt32(Console.ReadLine());
+                        Employee employeeWorker = new Worker(id,time);
                         employeeWorker.Name = name;
-                        mDep.AddEmployeeInDepartament("1.3.1", employeeWorker);
+                        mDep.AddEmployeeInDepartament(title, employeeWorker);
                         break;
                     case ConsoleKey.D3:
                         Console.WriteLine();
@@ -90,8 +92,10 @@ namespace Exempels_11_2
                         name = Console.ReadLine();
                         Console.WriteLine("Введите ID сотрудника");
                         id = Convert.ToInt32(Console.ReadLine());
-                        Employee employeeManager = new Manager(id);
-                        employeeManager.Name = name;
+                        Departament departamentForManager = mDep.FindDepartament(title, mDep.Departament);
+                        Manager manager = new Manager(departamentForManager, id);
+                        manager.Name = name;
+                        departamentForManager.Manager = manager;
                         break;
                     case ConsoleKey.D0:
                         choice = false;
@@ -101,6 +105,60 @@ namespace Exempels_11_2
                         break;
                 }
             }
+        }
+
+        static public void TestData(ManagementDepartament mDep)
+        {
+            
+            string newTitle = Console.ReadLine();
+            mDep.AddDep(ManagementDepartament.orgTitle, "1");
+            Employee employeeIntern = new Intern(11);
+            employeeIntern.Name = "bob";
+            mDep.AddEmployeeInDepartament("1", employeeIntern);
+            Employee employeeWorker = new Worker(12, 12);
+            employeeWorker.Name = "Sam";
+            mDep.AddEmployeeInDepartament("1", employeeWorker);
+            Employee employeeIntern1 = new Intern(11);
+            employeeIntern.Name = "bob";
+            mDep.AddEmployeeInDepartament("1", employeeIntern);
+            Employee employeeWorker1 = new Worker(12, 12);
+            employeeWorker.Name = "Sam";
+            mDep.AddEmployeeInDepartament("1", employeeWorker);
+            Employee employeeIntern2 = new Intern(11);
+            employeeIntern.Name = "bob";
+            mDep.AddEmployeeInDepartament("1", employeeIntern);
+            Employee employeeWorker2 = new Worker(12, 12);
+            employeeWorker.Name = "Sam";
+            mDep.AddEmployeeInDepartament("1", employeeWorker);
+            Employee employeeIntern3 = new Intern(11);
+            employeeIntern.Name = "bob";
+            mDep.AddEmployeeInDepartament("1", employeeIntern);
+            Employee employeeWorker3 = new Worker(12, 12);
+            employeeWorker.Name = "Sam";
+            Employee employeeIntern4 = new Intern(11);
+            employeeIntern.Name = "bob";
+            mDep.AddEmployeeInDepartament("1", employeeIntern);
+            Employee employeeWorker4 = new Worker(12, 12);
+            employeeWorker.Name = "Sam";
+            mDep.AddEmployeeInDepartament("1", employeeWorker);
+            Employee employeeIntern5 = new Intern(11);
+            employeeIntern.Name = "bob";
+            mDep.AddEmployeeInDepartament("1", employeeIntern);
+            Employee employeeWorker5 = new Worker(12, 12);
+            employeeWorker.Name = "Sam";
+            mDep.AddEmployeeInDepartament("1", employeeWorker);
+            Employee employeeIntern6 = new Intern(11);
+            employeeIntern.Name = "bob";
+            mDep.AddEmployeeInDepartament("1", employeeIntern);
+            Employee employeeWorker6 = new Worker(12, 12);
+            employeeWorker.Name = "Sam";
+            mDep.AddEmployeeInDepartament("1", employeeWorker);
+            Departament departamentForManager = mDep.FindDepartament("1", mDep.Departament);
+            Manager manager = new Manager(departamentForManager, 13);
+            manager.Name = "Man";
+            departamentForManager.Manager = manager;
+            mDep.PrintOrganisation();
+
         }
     }
 }
